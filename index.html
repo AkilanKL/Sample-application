@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bulletproof Academy</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=2.0, minimum-scale=1.0, maximum-scale=2.0">
+	
+
+	<link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="assets/css/jquery_ui_v1_12_1.css" type="text/css" /> -->
+	<link rel="stylesheet" href="assets/css/font-awesome.css" type="text/css" />
+	<script src="libs/fontawesome.js"></script>
+	<link rel="stylesheet" href="assets/css/framework.css" type="text/css" />
+	<link rel="stylesheet" href="assets/css/device.css" type="text/css" />	
+	<link rel="stylesheet" href="assets/css/start_screen.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="assets/css/templateCSS/TimelineMilestoneStyle.css" type="text/css" /> -->	
+	
+	<script src="libs/jquery-1.11.3/jquery-1.11.3.min.js"></script>
+	<!-- <script src="libs/jquery_ui_v1_12_1.js"></script> -->
+	<script src="libs/bootstrap-3.3.5-dist/bootstrap.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"  />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+	
+	<script src="libs/jquery-ui/jquery_ui_touch_punch.js"></script>
+	<script src="libs/jquery-ui/jquery_double_tap.js"></script>
+
+	<!-- Audio Library -->
+	<script src="libs/audio/jquery.jplayer.js"></script>
+
+	<!-- SCORM pipwerks Library -->
+	<script src="libs/pipwerks/SCORM_API_wrapper.js"></script>
+	
+	<script src="js/valueobjects/AppDataVO.js"></script>
+	<script src="js/valueobjects/CourseDataVO.js"></script>
+	<script src="js/valueobjects/TOCDataVO.js"></script>
+
+	<script src="js/model/DataManager.js"></script>
+	<script src="js/utils/StaticLibrary.js"></script>
+
+	<script src="js/services/APIService.js"></script>
+	<script src="js/services/scormAPI.js"></script>
+	
+	<script src="js/managers/AudioManager.js"></script>
+
+	<script src="js/controllers/generic/ApplicationController.js"></script>
+    <script src="js/controllers/generic/GlossaryController.js"></script>
+    <script src="js/controllers/generic/NotesController.js"></script>
+	<script src="js/utils/DataParser.js"></script>
+
+	<script src="js/services/ServiceLocator.js"></script>
+	<script src="js/managers/EventManager.js"></script>
+	<script src="js/mediaControls.js"></script>
+	<script src="js/main.js"></script> 
+	
+</head>
+<body id="parent-body">
+	<div id="jquery_jplayer_1"></div>
+
+<div id="preloader" class="overlay" style="display:none;">
+	<div class="loader"></div>
+</div>
+
+<div class="landingscreen_bg " id="landingPage" role="main">
+
+</div>
+
+<div class="container-fluid grandparent" style="display: none">
+	
+	<header>
+		<div class="header-inner">
+			<div class="header-info">
+				<img class="logo img-responsive" src="assets/images/logo.png" alt="Bulletproof Academy logo" />
+				<div class="header-title">
+					<h1 class="projectTitle"></h1><span>&nbsp;|&nbsp;</span>
+					<h2 class="module_title"></h2>	
+				</div>
+				
+			</div>
+			<div id="hanmburger" class="hanmburger" tabindex="0" role="button" aria-labelledby="menu-label" aria-expanded="false">
+				<span></span>
+			</div>		
+		</div>	
+		<div id="menu-label" class="labeldby">Open Main Menu</div>
+	</header>
+
+	<!-- course menu popup start here -->
+	<nav id="menu-section" aria-label="Course menu section" tabindex="0" class="menu_Popup">
+		<div>
+			<div class="menu-header">
+				<h3>MENU</h3>
+			</div> 
+			<div class="menu-body">
+				<div id="menu_lst_container">
+					
+				</div>
+		
+			</div>						
+		</div>						
+	</nav>	
+
+	<!-- course menu ends here -->
+
+<!-- ------------------- -->
+<!-- bodypart start here -->	
+	<div class="parent" id="parentContainerParent">
+		<main class="body_part" id="parentContainer"> <!-- Container_fillInBlanks -->
+		
+		
+		</main>
+	</div>	
+
+	<div class="next_previous_controls">
+		<nav>
+		<div class="nxt-btn-ctnr">
+			<button id="nextBtn" class="nxt-btn btn-disabled" type="button" name="Next" aria-label="Next">
+				<i class="fas fa-chevron-right"></i>
+			</button>
+		</div>
+		<div class="prev-btn-ctnr">
+			<button id="previousBtn" class="prev-btn btn-disabled" type="button" name="Previous" aria-label="Previous">
+				<i class="fas fa-chevron-left"></i>
+			</button>
+		</div>
+		</nav>
+	</div>
+
+</div>
+
+<section class="page-controls-sec">
+
+	<div class="page-controls-ctnr">
+		<div class="transcript-container">
+			<button id="transcript-ctrl" class="ctrl-btn transcript-ctrl" type="button" name="Transcript" aria-label="Transcript" data-toggle="tooltip" data-placement="top" title="Transcript" aria-expanded="false">
+				<i class="far fa-closed-captioning" aria-hidden="true"></i>
+			</button>
+			<div class="transcript-wrapper" aria-hidden="true">
+				<div class="transcript-header"><div>Transcript heading</div></div>
+				<div class="transcript-body">
+					<span tabindex="-1">
+						
+					</span>
+				</div>
+				<button class="transcript-close" aria-label="Transcript close" tabindex="-1">&times;</button>
+			</div>
+		</div>
+		<div class="volume-btn-container">
+			<button id="volume-ctrl" class="ctrl-btn volume-control-flag" type="button" name="Mute" title="Mute" tabindex="0" data-toggle="tooltip" data-placement="right">
+				<i class="fas fa-volume-up"></i>
+			</button>
+			<div class="volume-slide-wrapper">
+				<span id="volume-slider" class="volume-slider">
+					<span id="volume-slide" class="volume-slide"></span>
+					<!-- <span id="volume-thumb" class="volume-slide-thumb"></span> -->
+				</span>
+			</div>
+		</div>
+		<div class="play-btn-container">
+			<button id="play-pause" class="ctrl-btn pause-play-flag" type="button" name="Play" tabindex="0" data-toggle="tooltip" data-placement="top" title="Play">
+				<i class="fas fa-play"></i>
+			</button>
+		</div>
+		<div class="progress-container">
+			<div id="progress-sldr" class="progress-wrapper" aria-label="slider" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" role="slider"> 
+				<div id="progress" class="progress"></div>
+			</div>
+		</div>
+		
+	</div>
+	
+
+</section>
+
+<div id="log" style="position:absolute;top:100px;left:100px;width:200px;height:30px;border:1px solid red;display:none;
+"></div>
+ 
+</body>
+</html>
